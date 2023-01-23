@@ -1,0 +1,42 @@
+---
+title: React Higher Order Component
+date: '2022-02-15'
+tags: [JavaScript, React, Component]
+draft: false
+summary: Boilerplate code for creating a simple React HOC that wraps another component and adds some functionality to it.
+images: []
+layout: PostSimple
+---
+
+```jsx:HigherOrderComponent.tsx {4-20} showLineNumbers
+import { useRef, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
+
+function HOC({
+  children,
+  selector,
+}: {
+  children: React.ReactChild;
+  selector: string;
+}) {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+    return () => setMounted(false);
+  }, [selector]);
+
+  return mounted
+    ? createPortal(children, document.querySelector(selector)!)
+    : null;
+}
+
+export default HOC;
+```
+
+## Usage
+
+```jsx:index.tsx {4-20} showLineNumbers
+<HOC selector="#modal">
+  <SimpleSideModal show={show} close={Toggle} />
+</HOC>
+```

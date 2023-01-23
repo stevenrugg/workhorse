@@ -1,0 +1,134 @@
+---
+title: tRPC Router for building APIs
+date: '2022-06-27'
+tags: [React, API]
+draft: false
+summary: tRPC is a package that lets us build API endpoints within the same file in the form of functions, as well as providing type safety between the front and back-ends.
+images: []
+layout: PostSimple
+---
+
+## Installing `tRPC`
+
+First, install dependencies. You can use any input validators apart from `zod` as well. But `zod` is officialy recommended.
+
+```bash:zsh.exe
+yarn add @trpc/client @trpc/server @trpc/react @trpc/next zod react-query
+```
+
+Also have to ensure that strict mode is turned on in `tsconfig.json` for zod to run properly.
+
+```json:tsconfig.json showLineNumbers
+{
+  // ...
+  "compilerOptions": {
+    // ...
+    "strict": true
+  }
+}
+```
+
+## Structuring the `Next.js` project
+
+Create a new folder called server within `src` directory and add the following files:
+
+```ts:context.ts showLineNumbers
+import { CreateNextContextOptions } from "@trpc/server/adapters/next";
+import { inferAsyncReturnType } from "@trpc/server";
+
+export async function createContext(contextOptions?: CreateNextContextOptions) {
+  const req = contextOptions?.req;
+  const res = contextOptions?.res;
+
+  return {
+    req,
+    res,
+  };
+}
+
+export type MyContextType = inferAsyncReturnType<typeof createContext>;
+```
+
+```ts:create-router.ts showLineNumbers
+import * as trpc from "@trpc/server";
+import { MyContextType } from "./context";
+
+export function createRouter() {
+  return trpc.router<MyContextType>();
+}
+```
+
+Then, create a folder named `routers` and add the following two files to it:
+
+```ts:_app.ts showLineNumbers
+import { createRouter } from "../create-router";
+import { nameRouter } from "./nameRouter";
+
+export const appRouter = createRouter().merge("names.", nameRouter);
+
+export type AppRouter = typeof appRouter;
+```
+
+```ts:nameRouter.ts showLineNumbers
+import { z } from "zod";
+import { createRouter } from "../create-router";
+
+export const nameRouter = createRouter.query("getName", {
+  input: z.object({
+    name: z.string().nullish(),
+  }),
+  resolve({ input }) {
+    return { greeting: `Hello ${input.name}!` };
+  },
+});
+```
+
+Finally, adding an endpoint in NextJS `pages/api` folder
+
+```ts:[trpc].ts showLineNumbers
+import { createNextApiHandler } from "@trpc/server/adapters/next";
+import { appRouter } from "../../../server/routers/_app";
+import { createContext } from "../../../server/context";
+
+export default createNextApiHandler({
+  router: appRouter,
+  createContext,
+  batching: {
+    enabled: true,
+  },
+});
+```
+
+Next, we need to add a new folder called `/utils` and add a file called `trpc.ts`
+
+```ts:trpc.ts showLineNumbers
+import { createReactQueryHooks } from "@trpc/react";
+import { AppRouter } from "../server/routers/_app";
+import { inferProcedureOutput } from "@trpc/server";
+
+export const trpc = createReactQueryHooks<AppRouter>();
+
+export type inferQueryOutput<
+  TRouteKey extends keyof AppRouter["_def"]["queries"]
+> = inferProcedureOutput<AppRouter["_def"]["queries"][TRouteKey]>;
+```
+
+## Finally, we can actually start using our query
+
+```tsx:index.tsx showLineNumbers
+import { trpc } from "../utils/trpc";
+
+export default function Name() {
+  const nameQuery = trpc.useQuery(["name.getName", { name: "Brock" }]);
+
+  return (
+    <>
+      {nameQuery.data ? (
+        <h1>{nameQuery.data.greeting}</h1>
+      ) : (
+        <span>Loading...</span>
+      )}
+    </>
+  );
+}
+```

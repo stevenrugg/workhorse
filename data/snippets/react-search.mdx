@@ -1,0 +1,43 @@
+---
+title: React Context Hook For Search Values
+date: '2022-06-20'
+tags: [JavaScript, React, React Hooks]
+draft: false
+summary: To implement a simple on-page search functionality
+images: []
+layout: PostSimple
+---
+
+```jsx {14-25} showLineNumbers
+import React, { useState, useContext, createContext } from 'react'
+
+const searchContext = createContext()
+
+export function ProvideSearch({ children }) {
+  const search = useProvideSearch()
+  return <searchContext.Provider value={search}>{children}</searchContext.Provider>
+}
+
+export const useSearch = () => {
+  return useContext(searchContext)
+}
+
+function useProvideSearch() {
+  const [search, setSearch] = useState('')
+
+  const onSearch = (e) => {
+    e.preventDefault()
+
+    const searchValue = e.target.value
+    const valueWithoutSlash = searchValue.replace('/', '')
+
+    setSearch(valueWithoutSlash)
+    return valueWithoutSlash
+  }
+
+  return {
+    onSearch,
+    search,
+  }
+}
+```

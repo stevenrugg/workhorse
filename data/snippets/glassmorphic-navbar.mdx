@@ -1,0 +1,27 @@
+---
+title: Glassmorphic Sticky NavBar
+date: '2022-02-10'
+tags: [HTML, TailwindCSS]
+draft: false
+summary: Usage of Glassmorphism to achieve a sticky NavBar with a glass effect like the one used on this website.
+images: []
+layout: PostSimple
+---
+
+## Usage in `tailwind.css`
+
+```jsx showLineNumbers
+<header className="sticky top-0 left-0 right-0 z-50 border-b border-gray-200 bg-opacity-30 py-4 backdrop-blur-lg backdrop-filter dark:border-gray-700">
+<header/>
+```
+
+## Usage in normal CSS
+
+```jsx showLineNumbers
+.navbar {
+  position: sticky;
+  z-index: 10;
+  top: 0;
+  backdrop-filter: saturate(180%) blur(20px);
+}
+```
