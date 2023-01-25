@@ -1,0 +1,65 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model guestbook {
+  id         BigInt   @id @default(autoincrement())
+  email      String   @db.VarChar(256)
+  body       String   @db.VarChar(500)
+  created_by String   @db.VarChar(256)
+  created_at DateTime @default(now()) @db.DateTime(6)
+  updated_at DateTime @default(now()) @db.DateTime(6)
+}
+
+model views {
+  slug  String @id @db.VarChar(128)
+  count BigInt @default(1)
+}
+model post {
+  post_id            Int                  @id @default(autoincrement())
+  created_at         DateTime?            @default(now()) @db.DateTime(6)
+  title              String               @db.VarChar(256)
+  content            String?
+  author_id          Int?
+  users              user?               @relation(fields: [author_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction)
+  post_in_categories post_in_categories[]
+
+  @@index([author_id])
+}
+
+model profile {
+  profile_id Int     @id @default(autoincrement())
+  bio        String?
+  user_id    Int     @unique
+  user      user   @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction)
+}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+model user {
+  user_id      Int      @id @default(autoincrement())
+  email   String   @unique @db.VarChar(255)
+  name    String?  @db.VarChar(255)
+  posts   post[]
+  profile profile?
+}
+model categories {
+  category_id        Int                  @id @default(autoincrement())
+  name               String?              @db.VarChar(256)
+  post_in_categories post_in_categories[]
+}
+
+model post_in_categories {
+  post_id     Int
+  category_id Int
+  categories  categories @relation(fields: [category_id], references: [category_id], onDelete: NoAction, onUpdate: NoAction)
+  posts       post      @relation(fields: [post_id], references: [post_id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@unique([post_id, category_id], map: "post_id_category_id_unique")
+  @@index([category_id])
+}
+

@@ -1,23 +1,23 @@
 const siteMetadata = {
-  title: `Reuben Rapose`,
-  author: 'Reuben Rapose',
-  headerTitle: 'Reuben Rapose',
+  title: `Zencoder Online`,
+  author: 'Steven Rugg',
+  headerTitle: 'Zencoder Online',
   description:
-    'Reuben is a Data Scientist by training and Full-Stack Developer by passion. In his early teens, while pursuing his obsession with technology, he discovered a passion for building tech that makes a difference – Today, Reuben works as an independent Consultant, get in touch. ✌︎',
+    '✨💻👨‍💻 Steven Rugg is a unicorn 🦄. UI/UX, DevOps & Design are all part of his diverse skillset. He enjoys frontend work the most. This blog is his corner of the WWW. 👨‍💻💻✨"',
   language: 'en-us',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://reubence.com',
-  siteRepo: 'https://github.com/reubence/reubence.com',
+  siteUrl: 'https://zencoder.online',
+  siteRepo: 'https://github.com/stevenrugg/workhorse',
   rss: 'https://reubence.com/feed.xml',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
   socialBanner: '/static/images/twitter-card.png',
-  email: 'reuben.rapose@gmail.com',
-  github: 'https://github.com/reubence',
-  twitter: 'https://twitter.com/reuben_rapose',
-  facebook: 'https://facebook.com/reuben.rapose',
-  youtube: 'https://youtube.com/reuben.rapose',
-  linkedin: 'https://www.linkedin.com/in/reubence',
+  email: 'steven.rugg@zencoder.online',
+  github: 'https://github.com/stevenrugg',
+  twitter: 'https://twitter.com/stevensupergeek',
+  facebook: 'https://facebook.com/stevenrugg',
+  youtube: 'https://youtube.com',
+  linkedin: 'https://www.linkedin.com/in/stevenwrugg',
   locale: 'en-US',
   analytics: {
     // If you want to use an analytics provider you have to add it to the
@@ -27,7 +27,7 @@ const siteMetadata = {
   newsletter: {
     // supports mailchimp, buttondown, convertkit, klaviyo, revue, emailoctopus
     // Please add your .env file and modify it according to your selection
-    provider: 'mailchimp',
+    provider: 'buttondown',
   },
   comment: {
     // If you want to use a commenting system other than giscus you have to add it to the

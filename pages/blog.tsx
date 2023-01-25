@@ -4,7 +4,6 @@ import ListLayout from '@/layouts/ListLayout'
 import { PageSEO } from '@/components/SEO'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { ComponentProps } from 'react'
-import SnippetsLayout from '@/layouts/SnippetsLayout'
 import BlogListLayout from '@/layouts/BlogListLayout'
 
 export const POSTS_PER_PAGE = 10

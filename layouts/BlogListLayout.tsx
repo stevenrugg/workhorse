@@ -1,8 +1,7 @@
+/* eslint-disable */
 import Link from '@/components/Link'
-import Tag from '@/components/Tag'
 import { ComponentProps, useState } from 'react'
 import Pagination from '@/components/Pagination'
-import formatDate from '@/lib/utils/formatDate'
 import { PostFrontMatter } from 'types/PostFrontMatter'
 
 const gradients = {
@@ -76,6 +75,7 @@ export default function BlogListLayout({
         <ul className="grid grid-cols-1 gap-10 py-8 dark:border-gray-700 md:grid-cols-3">
           {!filteredBlogPosts.length && 'No posts found.'}
           {displayPosts.map((frontMatter, index) => {
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const { slug, date, title, summary, tags, readTime } = frontMatter
             return (
               <Link

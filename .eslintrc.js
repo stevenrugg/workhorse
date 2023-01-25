@@ -1,3 +1,9 @@
+{
+  /* @ts-ignore */
+}
+{
+  /* eslint-disable */
+}
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
@@ -19,6 +25,7 @@ module.exports = {
   ],
   rules: {
     'prettier/prettier': 'error',
+    'typescript-eslint/no-usused-vars': 'off',
     'react/react-in-jsx-scope': 'off',
     'jsx-a11y/anchor-is-valid': [
       'error',

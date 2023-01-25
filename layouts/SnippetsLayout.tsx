@@ -1,5 +1,4 @@
 import Link from '@/components/Link'
-import Tag from '@/components/Tag'
 import { ComponentProps, useState } from 'react'
 import Pagination from '@/components/Pagination'
 import formatDate from '@/lib/utils/formatDate'
@@ -61,6 +60,7 @@ export default function SnippetsLayout({
         <div className="dark:border-gray-700">
           {!filteredBlogPosts.length && 'No posts found.'}
           {displayPosts.map((frontMatter, index) => {
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const { slug, date, title, summary, tags } = frontMatter
             return (
               <Link href={`/snippets/${slug}`} key={slug}>

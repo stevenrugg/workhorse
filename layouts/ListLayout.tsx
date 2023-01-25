@@ -56,6 +56,7 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
           {!filteredBlogPosts.length && 'No posts found.'}
           {displayPosts.map((frontMatter) => {
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const { slug, date, title, summary, tags } = frontMatter
             return (
               <li key={slug} className="py-12">

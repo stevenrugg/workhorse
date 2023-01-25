@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { Tab } from '@headlessui/react'
 import clsx from 'clsx'
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const gradients = {
   '0': ' from-[#FDE68A] via-[#FCA5A5] to-[#FECACA]',
   '1': ' from-[#D8B4FE] to-[#818CF8]',

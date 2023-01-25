@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Link from '@/components/Link'
 import { PageSEO } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
@@ -5,6 +6,7 @@ import { getAllFilesFrontMatter } from '@/lib/mdx'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { PostFrontMatter } from 'types/PostFrontMatter'
 import NewsletterForm from '@/components/NewsletterForm'
+import Typical from 'react-typical'
 
 const MAX_DISPLAY = 3
 
@@ -30,47 +32,54 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
             <span className="relative inset-y-4 ml-24 inline-block px-1 before:absolute before:-inset-1 before:block before:-skew-y-6 before:rounded-lg before:bg-primary-600 before:bg-opacity-20 sm:inset-y-7 sm:ml-40">
               <span className="relative inline-block -rotate-6 text-primary-500">
                 <Link
-                  href="https://twitter.com/reubence_"
+                  href="https://twitter.com/stevensupergeek"
                   className="font-arrow2 text-sm font-bold text-primary-500 transition hover:underline hover:underline-offset-8 sm:text-xl"
                 >
-                  @reubence
+                  @stevensupergeek
                 </Link>
               </span>
             </span>
             <h1 className="pt-2 text-4xl font-bold leading-9 tracking-tight text-background-color dark:text-gray-100 sm:text-5xl sm:leading-10 md:text-6xl md:leading-snug">
-              Reuben
-              <span className="relative inset-y-8 ml-2 inline-block -rotate-12 font-arrow text-primary-500 sm:inset-y-14">
-                ^
-              </span>
-              Rapose
+              <Typical
+                steps={[
+                  'Software Engineer',
+                  1000,
+                  'Cloud Architect',
+                  1000,
+                  'Web Developer',
+                  1000,
+                  'UI/UX Engineer',
+                  1000,
+                  'Designer',
+                  1000,
+                  'Front-End Wizard',
+                  1000,
+                  'Programmer',
+                  1000,
+                  'Digital Artist',
+                  1000,
+                  '1337 C0D3R',
+                  1000,
+                  'I am ^',
+                  1000,
+                ]}
+                loop={Infinity}
+                wrapper="h1"
+              ></Typical>
             </h1>
             <p className="text-black dark:text-white sm:pr-6 sm:text-lg sm:leading-8">
-              Welcome to my Digital Garden – I am a <span className="">Data Scientist</span> by
-              training and <span className="">Full-Stack Developer</span> by passion who loves
-              building for the web & mobile. Also sometimes for the toaster.{' '}
-              {/* In my
-              free time, I like developing{' '}
-              <Link
-                href="/projects"
-                className="text-black underline decoration-primary-500 underline-offset-4 hover:cursor-pointer hover:text-primary-500 dark:text-white hover:dark:text-primary-500"
-              >
-                <a>side projects</a>
-              </Link>{' '}
-              and{' '}
-              <Link href="/blog">
-                <a className="text-black underline decoration-primary-500 underline-offset-4 hover:cursor-pointer hover:text-primary-500 dark:text-white hover:dark:text-primary-500">
-                  blogging
-                </a>
-              </Link>{' '}
-              about my journey as an Entrepreneur. */}
-              Have a good read! <span className="waving-hand text-2xl">👋🏻</span>
+              Welcome to my corner of the WWW.
+              <span className=""> My blog allows me to express myself with </span>
+              technology<span className=""> using my diverse, creative skillset.</span> I'm
+              passionate about learning and applying my knowledge: to create, to entertain, to
+              dazzle, to wonder & to dare to dream. <span className="waving-hand text-2xl">👋🏻</span>
             </p>
             <p className="leading-7 text-gray-500 underline underline-offset-4 sm:pr-6 sm:text-lg">
               <Link
                 href="/about"
                 className="hover:cursor-pointer hover:text-primary-500 dark:text-gray-500 hover:dark:text-primary-500"
               >
-                <a>Read the rest of my bio &rarr;</a>
+                <a>Read more about me &rarr;</a>
               </Link>
             </p>
           </div>
@@ -82,7 +91,7 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
         </div>
 
         <h1 className="my-4 mt-16 pb-2 text-3xl font-bold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl">
-          Recent Posts{' '}
+          Latest Posts{' '}
         </h1>
         <ul className="flex flex-col gap-10 dark:border-gray-700 md:flex-row">
           {!posts.length && 'No posts found.'}

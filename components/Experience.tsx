@@ -1,5 +1,6 @@
 import Link from '@/components/Link'
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Experience = ({ title, company, location, range, url, text1, text2 }) => {
   return (
     <div className="my-3">
