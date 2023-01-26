@@ -11,7 +11,9 @@ const ContentSecurityPolicy = `
   media-src 'none';
   connect-src *;
   font-src 'self' fonts.gstatic.com;
-  frame-src giscus.app
+  frame-src giscus.app;
+  script-src 'self' 'unsafe-inline' 'unsafe-eval' 'vitals.vercel-insights.com';
+  script-src 'self' '*.vercel.com'
 `
 
 const securityHeaders = [
