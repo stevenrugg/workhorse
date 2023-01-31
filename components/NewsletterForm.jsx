@@ -5,12 +5,12 @@ import siteMetadata from '@/data/siteMetadata'
 const NewsletterForm = ({
   title = 'Stay updated, receive the latest post straight to your mailbox',
 }) => {
-  const inputEl = useRef<HTMLInputElement>(null)
+  const inputEl = useRef < HTMLInputElement > null
   const [error, setError] = useState(false)
   const [message, setMessage] = useState('')
   const [subscribed, setSubscribed] = useState(false)
 
-  const subscribe = async (e: React.FormEvent<HTMLFormElement>) => {
+  const subscribe = async (e) => {
     e.preventDefault()
 
     const res = await fetch(`/api/${siteMetadata.newsletter.provider}`, {

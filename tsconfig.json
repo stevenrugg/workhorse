@@ -23,6 +23,6 @@
       "@/css/*": ["css/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/NewsletterForm.jsx"],
   "exclude": ["node_modules"]
 }
