@@ -1,8 +1,7 @@
 import axios from 'axios'
-import { NextApiRequest, NextApiResponse } from 'next'
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default async (req, res) => {
   const { email } = req.body
 
   if (!email || !email.length) {
