@@ -1,10 +1,4 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import mailchimp from '@mailchimp/mailchimp_marketing'
-
-mailchimp.setConfig({
-  apiKey: process.env.MAILCHIMP_API_KEY,
-  server: process.env.MAILCHIMP_API_SERVER, // E.g. us1
-})
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default async (req: NextApiRequest, res: NextApiResponse) => {
@@ -14,13 +8,31 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(400).json({ error: 'Email is required' })
   }
 
+  const mailChimpData = {
+    members: [
+      {
+        email_address: email,
+        status: 'subscribed',
+      },
+    ],
+  }
   try {
-    await mailchimp.lists.addListMember(process.env.MAILCHIMP_AUDIENCE_ID, {
-      email_address: email,
-      status: 'subscribed',
+    const audienceId = process.env.MAILCHIMP_AUDIENCE_ID as string
+    const URL = `https://us11.api.mailchimp.com/3.0/lists/${audienceId}`
+    const response = await fetch(URL, {
+      method: 'POST',
+      headers: {
+        Authorization: `auth ${process.env.MAILCHIMP_API_KEY as string}`,
+      },
+      body: JSON.stringify(mailChimpData),
     })
-    return res.status(201).json({ error: '' })
-  } catch (error) {
-    return res.status(500).json({ error: error.message || error.toString() })
+    const data = await response.json()
+    if (data.errors[0]?.error) {
+      return res.status(401).json({ error: data.errors[0].error })
+    } else {
+      res.status(200).json({ success: true })
+    }
+  } catch (e) {
+    res.status(401).json({ error: 'Something went wrong, please try again later.' })
   }
 }
