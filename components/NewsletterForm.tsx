@@ -1,14 +1,14 @@
 import React, { useRef, useState } from 'react'
 
 const NewsletterForm = ({
-  title = 'Stay updated, receive the latest post straight to your mailbox',
+  title = 'Monthly Newsletter. New posts straight to your inbox. No Spam!',
 }) => {
   const inputEl = useRef(null)
   const [error, setError] = useState(false)
   const [message, setMessage] = useState('')
   const [subscribed, setSubscribed] = useState(false)
 
-  const subscribe = async (e) => {
+  const subscribe = async (e: { preventDefault: () => void }) => {
     e.preventDefault()
 
     const res = await fetch(`/api/mailchimp`, {
