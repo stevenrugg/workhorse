@@ -1,20 +1,17 @@
-# This blog is templated from the [Next.js, TailwindCSS & MDX blog starter](https://github.com/timlrx/tailwind-nextjs-starter-blog)
+# Jamstack Blog featuring: Next.js, Tailwind CSS, Next-Auth, MDX, Prisma & Mailchimp Newsletter
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/stevenrugg/workhorse)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fstevenrugg%2Fworkhorse)
 
-## This blog features
+## Zencoder.online
 
-- **Prisma ORM**- The ORM layer to communicate with the database. [prisma](https://prisma.io)
+- **Framework**: [Next.js](https://nextjs.org/)
+- **Database**: [PlanetScale](https://planetscale.com)
+- **Authentication**: [NextAuth.js](https://next-auth.js.org)
+- **Deployment**: [Vercel](https://vercel.com)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com)
+- **Analytics**: [Vercel Analytics](https://vercel.com/analytics)
 
-- **Planetscale Database** - The database to persist guestbook comments and user information .[planetscale](https://planetscale.com)
-
-- **MDX** & **GRAYMATTER** - Format blog posts using `markdown` and `yaml frontmatter` and place in folder. The posts get rendered using the specified layout in the `layouts` folder.
-
-- **Next-Auth** - Next-Auth for authentication [NextAuth](https://next-auth.js-org)
-
-- **Tailwind CSS** - The latest version of Tailwind CSS, a utilities first CSS library
-- **React Typical** - A npm package for a cool typing animation.
-
+## Running Locally
 ### Once you have forked this blog
 
 Open a terminal in the folder you cloned this blog into and run the following command:
