@@ -23,6 +23,6 @@
       "@/css/*": ["css/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/NewsletterForm.jsx", "pages/api/mailchimp.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/NewsletterForm.tsx", "pages/api/mailchimp.js", "pages/api/mailchimp.jsx"],
   "exclude": ["node_modules"]
 }

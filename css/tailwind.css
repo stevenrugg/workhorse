@@ -100,3 +100,12 @@ input:-webkit-autofill:focus {
     transform: rotate(0deg);
   }
 }
+.highlight a {
+  background-image: linear-gradient(to right, rgba(144,65,0,0) 50%, blue 50%);
+  background-position: -0% 0;
+  text-decoration: none;
+  transition: background-position 0.5s ease-out;
+}
+.highlight a:hover {
+    background-position: -99.99% 0;
+}
