@@ -1,5 +1,13 @@
 const experienceData = [
   {
+    title: 'Web Developer',
+    company: 'Upwork',
+    location: 'Seattle, WA',
+    range: 'Feb 2021 - Present',
+    url: 'https://www.upwork.com/freelancers/~01659452aedeeaff03?viewMode=1',
+    text1: 'Create, Develop & Maintain shopify and other e-commerce websites and integrations',
+  },
+  {
     title: 'Senior Software Engineer',
     company: 'Merlin Media LLC',
     location: 'Seattle, WA',
