@@ -82,9 +82,9 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
           )}
         </div>
         <div>
-          <h2>
+          <h1>
             NFT Minting CandyMachine Coming Soon!
-          </h2>
+          </h1>
           <p> 
             I've been working on an NFT Minting application that will allow users to mint NFTs on the Solana blockchain for just a few cents!
             Simply connect your Solana wallet and upload your image, and metadata then press the "MINT IT!" button and watch as your NFT is minted and 
