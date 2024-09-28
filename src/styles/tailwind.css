@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+@layer base {
+  h1 {
+    @apply text-3xl font-bold md:text-4xl text-main-5 dark:text-main-1;
+  }
+
+  h2 {
+    @apply text-2xl font-bold md:text-3xl text-main-5 dark:text-main-1;
+  }
+
+  h3 {
+    @apply text-xl font-bold md:text-2xl text-main-5 dark:text-main-1;
+  }
+
+  h4 {
+    @apply text-lg font-bold md:text-xl text-main-5 dark:text-main-1;
+  }
+
+  body {
+    @apply antialiased font-primary bg-main-1 dark:bg-main-5 text-main-4 dark:text-main-1.5;
+  }
+
+  .layout {
+    @apply w-[86%] md:max-w-2xl mx-auto;
+  }
+
+  :is(h1, h2) ~ p:first-of-type {
+    @apply mt-[1.5em];
+  }
+
+  :is(h1, h2) ~ p:not(:first-of-type) {
+    @apply mt-[0.875em];
+  }
+}
