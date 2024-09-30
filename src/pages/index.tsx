@@ -17,15 +17,21 @@ interface HomeProps {
 const Home: NextPage<HomeProps> = ({ blogs = [] }) => {
   const meta = {
     title: ownerName,
-    template: 'Personal Blog',
-    description: `I'm ${ownerName}, a software engineer in one of the biggest tech industry in the world, I personally writing mostly about web development and tech careers.`,
+    template: 'seattlesupergeek',
+    description: `👋 I'm   ^  ,  A full stack software engineer specializing in frontend wizardry.`,
     openGraph: {
       images: [
         {
           url: 'https://og-image.vercel.app/**NEXT.js%20Starter%20Blog**%3Cbr%20%2F%3EStarter%20blog%20with%20MDX%2C%20Tailwind%20CSS%2C%20and%20TypeScript..png?theme=dark&md=1&fontSize=100px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fhyper-bw-logo.svg',
-          alt: 'NEXT.js Starter Blog',
+          alt: 'seattlesupergeek',
           width: 1200,
           height: 600
+        },
+        {
+          url: '/static/steven.png',
+          alt: 'steven',
+          height: 300,
+          width: 300
         }
       ]
     }
@@ -33,10 +39,10 @@ const Home: NextPage<HomeProps> = ({ blogs = [] }) => {
 
   return (
     <Layout as='main' {...meta}>
-      <HeroWithPhoto image='/static/avatar.jpg' imageAlt={ownerName} {...meta}>
+      <HeroWithPhoto image='/static/steven.png' imageAlt={ownerName} {...meta}>
         <p className={twclsx('max-w-prose mt-2')}>
-          If you want to get in touch with me, please catch me on one of my social media, I&apos;m always open when
-          I&apos;m out of my office.
+          If you want to get in touch with me head over to my contact page and send me a message. You
+          can also contact me through social media, with the links I have provided.
         </p>
       </HeroWithPhoto>
 
@@ -49,7 +55,7 @@ const Home: NextPage<HomeProps> = ({ blogs = [] }) => {
             'hover:text-primary-3 dark:hover:text-primary-2'
           )}
         >
-          <span>See all post</span>
+          <span>See all posts</span>
           <ArrowSmRightIcon
             className={twclsx(
               'inline-flex w-4 h-4 transition-all duration-200',

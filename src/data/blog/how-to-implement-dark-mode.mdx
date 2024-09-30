@@ -1,0 +1,138 @@
+---
+featured: true
+title: 'How to Properly Implement Dark Mode in Your Frontend Application'
+summary: 'Modern applications can benefit from a user experience called dark mode. It changes the complete theme of an app to a dark variant.'
+published: '09/27/2024'
+last_modified: '09/27/2024'
+author_name: 'Steven Rugg'
+author_image: '/static/avatar.jpg'
+tags: ['Dark Mode', 'Themes', 'Frontend']
+keywords: ['Dark Mode', 'Dark Theme', 'System Theme', 'Theme', 'Dark Template']
+---
+
+# How to Implement Dark Mode in a Frontend Project
+With the rising popularity of dark mode across modern web applications, implementing a well-designed and responsive dark mode option has become a key feature for many developers. Dark mode not only reduces eye strain but also enhances the visual appeal for certain audiences. In this article, we’ll explore how to implement dark mode in a frontend project, focusing on three different approaches: CSS custom properties, media queries, and JavaScript-based state management.
+
+## Why Dark Mode?
+Dark mode enhances the user experience by providing an alternate color scheme that reduces glare, particularly in low-light environments. Websites and apps like Twitter, Slack, and GitHub offer this feature, and it has become almost a standard in user-centric design. Offering dark mode also caters to user preferences, boosting engagement and accessibility.
+
+### 1. Using CSS Custom Properties
+CSS custom properties (or CSS variables) provide an elegant way to manage themes, including dark and light modes. The idea is to define color variables at the root level and swap their values based on user preference or system settings.
+
+*Steps to Implement:*
+
+Define Your Theme Variables: First, define your theme colors in :root as custom properties. These variables will be used to style your entire site.
+
+```css
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+}
+
+/* Dark mode theme variables */
+[data-theme="dark"] {
+    --bg-color: #1e1e1e;
+    --text-color: #f5f5f5;
+}
+```
+
+Apply Variables Across Your CSS: Use these variables wherever colors are needed in your CSS.
+
+```css
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+```
+
+Switching Themes Using JavaScript: Toggle between light and dark modes by adding or removing a data-theme attribute in JavaScript.
+
+```javascript
+const toggleTheme = () => {
+    const currentTheme = document.documentElement.getAttribute("data-theme");
+    const newTheme = currentTheme === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", newTheme);
+};
+
+document.getElementById("theme-toggle").addEventListener("click", toggleTheme);
+```
+In this example, the data-theme attribute toggles between "dark" and "light" mode when the user clicks a button.
+
+### 2. Using Media Queries for System Preferences
+Another approach to implementing dark mode is by detecting the user's system preferences with the prefers-color-scheme media query. This allows you to automatically adjust the theme based on whether the user has set their OS to dark or light mode.
+
+*Steps to Implement:*
+
+Define the Media Query in Your CSS: You can write CSS rules that apply only when the system is set to dark mode.
+
+```css
+body {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1e1e1e;
+        color: #f5f5f5;
+    }
+}
+```
+Automatic Theme Detection: The user's operating system settings will automatically switch between the two themes, requiring no interaction from the user.
+
+Combining with JavaScript for User Control: If you want to allow users to manually toggle dark mode on top of their system settings, you can combine this method with JavaScript.
+
+```javascript
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+}
+```
+This setup automatically detects dark mode preferences while allowing manual overrides.
+
+### 3. JavaScript-Based Dark Mode Toggle with Local Storage
+One of the most flexible ways to implement dark mode is through a JavaScript-based toggle that saves the user’s theme preference in local storage. This way, the theme persists across sessions and page reloads.
+
+*Steps to Implement:*
+
+Set Up the Toggle: Use JavaScript to detect the current theme, toggle it, and save the user’s preference.
+
+```javascript
+const setTheme = theme => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+};
+
+const toggleTheme = () => {
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+};
+
+document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+```
+Load the User's Preference on Page Load: On page load, check local storage for a previously selected theme and apply it.
+
+```javascript
+const savedTheme = localStorage.getItem('theme') || 'light';
+setTheme(savedTheme);
+```
+Update Your HTML: Provide a button in the UI for users to toggle the theme.
+
+```html
+<button id="theme-toggle">Toggle Dark Mode</button>
+```
+This approach provides full control to the user and keeps their preferences across page loads, which enhances the user experience.
+
+*Final Thoughts*
+
+Dark mode is more than just a trendy feature—it improves accessibility, reduces eye strain, and can enhance the user experience. Whether you opt for CSS variables, media queries, or JavaScript, each method has its own strengths. Combining these approaches can provide maximum flexibility, allowing for both system preferences and user toggling.
+By integrating dark mode effectively into your frontend project, you make your application more versatile, user-friendly, and future-proof.
+
+### Further Enhancements:
+- Animations: Add smooth transitions when switching between light and dark modes using CSS transitions.
+- Theming Beyond Colors: Use your theme variables to also control spacing, shadows, and font sizes to give a full thematic experience.
+### Useful Tools:
+- Axe DevTools for accessibility testing.
+- CSS Custom Properties Documentation for deep dive into using CSS variables.
+- With these techniques, you can implement a sleek, user-friendly dark mode that adds value to your frontend project.
+- CSS engines like TailwindCSS, CSS-in-JS, Styled-Components, ect. can greatly uncomplicate the process of implementing dark mode.

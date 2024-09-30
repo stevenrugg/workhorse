@@ -34,7 +34,19 @@ module.exports = {
           3: colors.purple[500]
         }
       }
-    }
+    },
+    keyframes: {
+      rainbowBorder: {
+        '0%': { 'border-color': 'transparent transparent transparent transparent' },
+        '25%': { 'border-color': 'transparent transparent transparent red' },
+        '50%': { 'border-color': 'transparent transparent yellow red' },
+        '75%': { 'border-color': 'transparent green yellow red' },
+        '100%': { 'border-color': 'blue green yellow red' },
+      },
+    },
+    animation: {
+      'rainbow-border': 'rainbowBorder 0.6s ease-in-out forwards',
+    },
   },
   plugins: [require('@tailwindcss/typography')]
 }

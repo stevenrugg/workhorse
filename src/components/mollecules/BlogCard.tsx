@@ -14,9 +14,9 @@ const BlogCard: React.FunctionComponent<BlogCardProps> = ({ slug, title, summary
     <UnstyledLink
       className={twclsx(
         'flex flex-col p-4 w-full h-full',
-        'border rounded-lg transition',
-        'border-main-2 dark:border-main-3',
-        'hover:border-main-4 dark:hover:border-main-2'
+        'border rounded-lg transition bg-opacity-50',
+        'border-main-2 dark:border-main-3 hover:shadow-2xl hover:dark:shadow-white hover:dark:drop-shadow-sm',
+        'hover:border-main-4 dark:hover:border-main-2 backdrop-blur backdrop-filter'
       )}
       href={`/blog/${slug}`}
     >

@@ -13,6 +13,18 @@ export const APP_ROUTE: Array<AppRoute> = [
     href: '/blog'
   },
   {
+    children: 'About',
+    href: '/about'
+  },
+  {
+    children: 'Projects',
+    href: '/projects'
+  },
+  {
+    children: 'Contact',
+    href: '/contact'
+  },
+  {
     children: 'Tags',
     href: '/tags'
   }

@@ -3,6 +3,8 @@ import Image, { ImageProps } from 'next/image'
 interface CustomImageProps extends ImageProps {
   display: 'responsive' | 'intrinsic'
   alt: string
+  width: number
+  height: number
 }
 
 /**
@@ -33,11 +35,12 @@ const CustomImage: React.FunctionComponent<CustomImageProps> = ({
   if (display === 'responsive') {
     return (
       <Image
-        layout='fill'
+        layout='responsive'
         src={src}
         alt={alt}
         title={alt}
-        loading='lazy'
+        height={height}
+        width={width}
         // placeholder='blur'
         // blurDataURL='/static/images/blur.png'
         {...props}
@@ -53,7 +56,6 @@ const CustomImage: React.FunctionComponent<CustomImageProps> = ({
       title={alt}
       width={width}
       height={height}
-      loading='lazy'
       //   placeholder='blur'
       //   blurDataURL='/static/images/blur.png'
       {...props}
