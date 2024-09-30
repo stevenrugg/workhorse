@@ -2,9 +2,11 @@
 
 // @typescript-eslint/ban-ts-comment
 
-import CustomImage from "@/components/mollecules/CustomImage";
+
 import Layout from "@/components/template/Layout";
 import UnstyledLink from "../atoms/UnstyledLink";
+import CustomImage from "../mollecules/CustomImage";
+
 
 
 
@@ -17,29 +19,28 @@ function Projectscard({ project }) {
     "description": "Showcase of projects I have built"
   }
   return (
-    <Layout as='div' {...meta}>
-    <div className="card max-w-sm rounded-xl shadow-lg overflow-hidden bg-white dark:bg-gray-800">
-      <figure className="w-96 h-48">
-        <CustomImage
-          display="responsive"
-          src={project.src}
-          alt={project.name}
-          height={300}
-          width={300}
-        
-          
-        />
-      </figure>
-      <div className="card-body p-4">
-        <h2 className="card-title text-lg font-semibold">{project.title}</h2>
-        <p className="text-gray-600 dark:text-gray-300">{project.description}</p>
-        <div className="card-actions justify-end">
-          <UnstyledLink href={project.href}>
-            <button className="btn bg-fuchsia-900 text-white">Check it Out</button>
+    <Layout as='main' {...meta}>
+      <div className="cardcontainer">
+    <div className="thecard border-solid shadow-md rounded-1 hover:shadow-lg dark:hover:shadow-white border-2">
+    <div className="box content-center text-center shadow-sm">
+    <CustomImage
+      display="intrinsic"
+      src={project.src}
+      width={200}
+      height={200}
+      alt={project.name}/>
+      <div className="content text-center">
+        <h3>{project.title}</h3>
+        <p className='m-1'>{project.description}</p>
+        <UnstyledLink
+        href='/project/[id].tsx'
+        >
+          <button className='bg-fuchsia-700 m-3 text-white rounded-lg p-1 align-middle'>Check it Out</button>
           </UnstyledLink>
-        </div>
       </div>
     </div>
+  </div>
+  </div>
     </Layout>
   );
 }
@@ -49,7 +50,25 @@ export default Projectscard;
 
 
 
-
+/*<div className="card max-w-sm rounded-xl shadow-lg overflow-hidden bg-white dark:bg-gray-800">
+      
+      <CustomImage
+      display="intrinsic"
+      src={project.src}
+      width={200}
+      height={200}
+      alt={project.name}/>
+    
+    <div className="card-body">
+      <h2 className="card-title text-lg font-semibold">{project.title}</h2>
+      <p className="text-gray-600 dark:text-gray-300">{project.description}</p>
+      <div className="card-actions justify-end">
+        <UnstyledLink href={project.href}>
+          <button className="btn bg-fuchsia-900 text-white relative rounded-lg p-1.5 self-center">Check it Out</button>
+        </UnstyledLink>
+      </div>
+    </div>
+  </div> */
 
 
 

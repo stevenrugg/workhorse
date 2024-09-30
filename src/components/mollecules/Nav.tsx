@@ -8,8 +8,8 @@ const Nav = () => {
 
   return (
     <nav className={twclsx(
-      'isolate aspect-auto accent-transparent bg-white shadow-lg dark:shadow-white dark:ring-1 dark:ring-white/5 ring-1 ring-black/5 rounded-r-full dark:bg-black/20 dark:bg-opacity-30 rounded-l-full backdrop-blur-md backdrop-filter dark:backdrop-blur dark:backdrop-filter top-0',
-      'top-0 md:flex items-center space-x-4 p-4 z-50 bg-opacity-30' // Sticky glassmorphic navbar
+      'accent-transparent bg-white shadow-lg dark:shadow-white dark:ring-1 dark:ring-white/5 ring-1 ring-black/5 rounded-r-full dark:bg-black/20 dark:bg-opacity-30 rounded-l-full backdrop-blur-md backdrop-filter dark:backdrop-blur dark:backdrop-filter',
+      'md:flex items-center space-x-4 p-4 z-50 bg-opacity-30' 
     )}>
       {APP_ROUTE.map((item, id) => (
         <UnstyledLink

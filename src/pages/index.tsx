@@ -26,12 +26,6 @@ const Home: NextPage<HomeProps> = ({ blogs = [] }) => {
           alt: 'seattlesupergeek',
           width: 1200,
           height: 600
-        },
-        {
-          url: '/static/steven.png',
-          alt: 'steven',
-          height: 300,
-          width: 300
         }
       ]
     }
