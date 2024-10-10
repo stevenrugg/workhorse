@@ -1,3 +1,4 @@
+
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 
 // @typescript-eslint/ban-ts-comment
@@ -7,22 +8,28 @@ import Layout from "@/components/template/Layout";
 import UnstyledLink from "../atoms/UnstyledLink";
 import CustomImage from "../mollecules/CustomImage";
 
+import React from "react";
+
+
+
+
+
 
 
 
 // @ts-ignore
 // @ts-ignore
-function Projectscard({ project }) {
+export default function Projectscard({ project }) {
+  
 
-  const meta = {
-    "title": "Projects Page",
-    "description": "Showcase of projects I have built"
-  }
+
+
+  
   return (
-    <Layout as='main' {...meta}>
+    <Layout as='div' title="projects" description="projects to showcase my skills">
       <div className="cardcontainer">
-    <div className="thecard border-solid shadow-md rounded-1 hover:shadow-lg dark:hover:shadow-white border-2">
-    <div className="box content-center text-center shadow-sm">
+    <div className="thecard border-solid shadow-lg rounded-1 hover:shadow-xl dark:hover:shadow-white dark:border-white-2 border-2">
+    <div className="box content-center text-center drop-shadow-sm">
     <CustomImage
       display="intrinsic"
       src={project.src}
@@ -30,10 +37,10 @@ function Projectscard({ project }) {
       height={200}
       alt={project.name}/>
       <div className="content text-center">
-        <h3>{project.title}</h3>
+        <h3 className="text-purple-400 dark:text-purple-200 mb-1">{project.title}</h3>
         <p className='m-1'>{project.description}</p>
         <UnstyledLink
-        href='/project/[id].tsx'
+        href={`projects/${project.id}`}
         >
           <button className='bg-fuchsia-700 m-3 text-white rounded-lg p-1 align-middle'>Check it Out</button>
           </UnstyledLink>
@@ -41,11 +48,13 @@ function Projectscard({ project }) {
     </div>
   </div>
   </div>
-    </Layout>
+  </Layout>
+   
   );
 }
 
-export default Projectscard;
+
+
 
 
 

@@ -18,20 +18,20 @@ export type UnstyledLinkProps = {
 const UnstyledLink: React.FunctionComponent<UnstyledLinkProps> = ({ href, className, children, ...props }) => {
   if (href.toString().startsWith('http')) {
     return (
-      <a {...props} href={href as string} className={twclsx(className)} target='_blank' rel='noopener noreferrer'>
+      <Link {...props} href={href as string} className={twclsx(className)} target='_blank' rel='noopener noreferrer'>
         {props.sr && <span className='sr-only'>{props.sr}</span>}
         {children}
-      </a>
+      </Link>
     )
   }
   return (
     // DISABLE DEFAULT SCROLL TO TOP ON NEXTJS LINK
-    <Link {...props} scroll={false} href={href}>
-      <a title={props.sr} onClick={props.onClick} className={twclsx(className)}>
+    
+      <Link {...props} scroll={false} title={props.sr} onClick={props.onClick} href={href} className={twclsx(className)}>
         {props.sr && <span className='sr-only'>{props.sr}</span>}
         {children}
-      </a>
-    </Link>
+      </Link>
+   
   )
 }
 
